@@ -15,6 +15,9 @@ script:
   #
   # Set pythonpath
 
+  # checkout out Airphrame specific branch
+  git checkout airphrame_v3.1.x
+  
   # install
   - cd pymavlink
   - python setup.py build install
