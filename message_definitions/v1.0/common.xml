@@ -1900,6 +1900,73 @@
               <entry value="32" name="ADSB_FLAGS_VALID_SQUAWK"></entry>
               <entry value="64" name="ADSB_FLAGS_SIMULATED"></entry>
           </enum>
+          <enum name="ADSB_TRANSPONDER_DYNAMIC_INPUT_STATE_FLAGS">
+              <description>State flags for ADS-B transponder dynamic input</description>
+              <entry value="1" name="ADSB_TRANSPONDER_INTENT_CHANGE"></entry>
+              <entry value="2" name="ADSB_TRANSPONDER_AUTOPILOT_ENABLED"></entry>
+              <entry value="4" name="ADSB_TRANSPONDER_NICBARO_CROSSCHECKED"></entry>
+              <entry value="8" name="ADSB_TRANSPONDER_ON_GROUND"></entry>
+              <entry value="16" name="ADSB_TRANSPONDER_IDENT"></entry>
+          </enum>
+              <enum name="ADSB_TRANSPONDER_DYNAMIC_INPUT_CONTROL_FLAGS">
+              <description>Control flags for ADS-B transponder dynamic input</description>
+              <entry value="0" name="ADSB_TRANSPONDER_STANDBY"></entry>
+              <entry value="1" name="ADSB_TRANSPONDER_RECEIVE_ONLY"></entry>
+              <entry value="2" name="ADSB_TRANSPONDER_TX_ENABLE_1090ES"></entry>
+              <entry value="4" name="ADSB_TRANSPONDER_TX_ENABLE_UAT"></entry>
+          </enum>
+          <enum name="ADSB_TRANSPONDER_DYNAMIC_INPUT_FIX_TYPE_FLAGS">
+              <description>Status flags for ADS-B transponder dynamic input</description>
+              <entry value="0" name="ADSB_TRANSPONDER_GPS_NO_FIX_0"></entry>
+              <entry value="1" name="ADSB_TRANSPONDER_GPS_NO_FIX_1"></entry>
+              <entry value="2" name="ADSB_TRANSPONDER_GPS_2D_FIX"></entry>
+              <entry value="3" name="ADSB_TRANSPONDER_GPS_3D_FIX"></entry>
+              <entry value="4" name="ADSB_TRANSPONDER_GPS_DGPS"></entry>
+              <entry value="5" name="ADSB_TRANSPONDER_GPS_RTK"></entry>
+          </enum>
+          <enum name="ADSB_TRANSPONDER_DYNAMIC_OUTPUT_STATUS_FLAGS">
+              <description>Status flags for ADS-B transponder dynamic output</description>
+              <entry value="0" name="ADSB_TRANSPONDER_OK"></entry>
+              <entry value="1" name="ADSB_TRANSPONDER_TX_FAIL_1090ES"></entry>
+              <entry value="2" name="ADSB_TRANSPONDER_RX_FAIL_1090ES"></entry>
+              <entry value="4" name="ADSB_TRANSPONDER_TX_FAIL_UAT"></entry>
+              <entry value="8" name="ADSB_TRANSPONDER_RX_FAIL_UAT"></entry>
+          </enum>
+          <enum name="ADSB_TRANSPONDER_STATIC_INPUT_ALW_ENCODE">
+              <description>Definitions for aircraft size</description>
+              <entry value="0" name="ADSB_TRANSPONDER_AIRCRAFT_SIZE_NO_DATA"></entry>
+              <entry value="1" name="ADSB_TRANSPONDER_AIRCRAFT_SIZE_L15M_W23M"></entry>
+              <entry value="2" name="ADSB_TRANSPONDER_AIRCRAFT_SIZE_L25M_W28P5M"></entry>
+              <entry value="3" name="ADSB_TRANSPONDER_AIRCRAFT_SIZE_L25_34M"></entry>
+              <entry value="4" name="ADSB_TRANSPONDER_AIRCRAFT_SIZE_L35_33M"></entry>
+              <entry value="5" name="ADSB_TRANSPONDER_AIRCRAFT_SIZE_L35_38M"></entry>
+              <entry value="6" name="ADSB_TRANSPONDER_AIRCRAFT_SIZE_L45_39P5M"></entry>
+              <entry value="7" name="ADSB_TRANSPONDER_AIRCRAFT_SIZE_L45_45M"></entry>
+              <entry value="8" name="ADSB_TRANSPONDER_AIRCRAFT_SIZE_L55_45M"></entry>
+              <entry value="9" name="ADSB_TRANSPONDER_AIRCRAFT_SIZE_L55_52M"></entry>
+              <entry value="10" name="ADSB_TRANSPONDER_AIRCRAFT_SIZE_L65_59P5M"></entry>
+              <entry value="11" name="ADSB_TRANSPONDER_AIRCRAFT_SIZE_L65_67M"></entry>
+              <entry value="12" name="ADSB_TRANSPONDER_AIRCRAFT_SIZE_L75_W72P5M"></entry>
+              <entry value="13" name="ADSB_TRANSPONDER_AIRCRAFT_SIZE_L75_W80M"></entry>
+              <entry value="14" name="ADSB_TRANSPONDER_AIRCRAFT_SIZE_L85_W80M"></entry>
+              <entry value="15" name="ADSB_TRANSPONDER_AIRCRAFT_SIZE_L85_W90M"></entry>
+          </enum>
+          <enum name="ADSB_TRANSPONDER_STATIC_INPUT_GPS_LAT_OFFSET">
+              <description>GPS lataral offset encoding</description>
+              <entry value="0" name="ADSB_TRANSPONDER_GPS_LAT_OFFSET_NO_DATA"></entry>
+              <entry value="1" name="ADSB_TRANSPONDER_GPS_LAT_OFFSET_LEFT_2M"></entry>
+              <entry value="2" name="ADSB_TRANSPONDER_GPS_LAT_OFFSET_LEFT_4M"></entry>
+              <entry value="3" name="ADSB_TRANSPONDER_GPS_LAT_OFFSET_LEFT_6M"></entry>
+              <entry value="4" name="ADSB_TRANSPONDER_GPS_LAT_OFFSET_RIGHT_0M"></entry>
+              <entry value="5" name="ADSB_TRANSPONDER_GPS_LAT_OFFSET_RIGHT_2M"></entry>
+              <entry value="6" name="ADSB_TRANSPONDER_GPS_LAT_OFFSET_RIGHT_4M"></entry>
+              <entry value="7" name="ADSB_TRANSPONDER_GPS_LAT_OFFSET_RIGHT_6M"></entry>
+          </enum>
+          <enum name="ADSB_TRANSPONDER_DYNAMIC_INPUT_GPS_LON_OFFSET">
+              <description>GPS longitudinal offset encoding</description>
+              <entry value="0" name="ADSB_TRANSPONDER_GPS_LON_OFFSET_NO_DATA"></entry>
+              <entry value="1" name="ADSB_TRANSPONDER_GPS_LON_OFFSET_APPLIED_BY_SENSOR"></entry>
+          </enum>
      </enums>
      <messages>
           <message id="0" name="HEARTBEAT">
@@ -3097,6 +3164,40 @@
             <field type="float" name="size_y">Size in radians of target along y-axis</field>
         </message>
         <!-- MESSAGE IDs 180 - 240: Space for custom messages in individual projectname_messages.xml files -->
+		<message id="201" name="ADSB_TRANSPONDER_STATIC_INPUT">
+			<description>Static data to configure the ADS-B transponder (send within 10s of a POR)</description>
+			<field type="uint32_t" name="ICAO">Vehicle address (24 bit)</field>
+			<field type="char[9]" name="callsign">Vehicle identifier (8 characters, null terminated, valid characters are A-Z, 0-9, " " only)</field>
+			<field type="uint8_t" name="emitter" enum="ADSB_EMITTER_TYPE">Transmitting vehicle type. See ADSB_EMITTER_TYPE enum</field>
+			<field type="uint8_t" name="alwEncode" enum="ADSB_TRANSPONDER_STATIC_INPUT_ALW_ENCODE">Aircraft length and width encoding (table 2-35 of DO-282B)</field>
+			<field type="uint8_t" name="gpsLatOffs" enum="ADSB_TRANSPONDER_STATIC_INPUT_GPS_LAT_OFFSET">GPS antenna lateral offset (table 2-36 of DO-282B)</field>
+			<field type="uint8_t" name="gpsLonOffs" enum="ADSB_TRANSPONDER_STATIC_INPUT_GPS_LON_OFFSET">GPS antenna longitudinal offset from nose [if non-zero, take position (in meters) divide by 2 and add one] (table 2-37 DO-282B)</field>
+			<field type="uint16_t" name="stallSpeed">Aircraft stall speed in cm/s</field>
+		</message>
+		<message id="202" name="ADSB_TRANSPONDER_DYNAMIC_INPUT">
+			<description>Dynamic data used to generate ADS-B out transponder data</description>
+			<field type="uint32_t" name="utcTime">UTC time in s since GPS epoch (Jan 6, 1980). If unknown set to UINT32_MAX</field>
+			<field type="int32_t" name="latitude">Latitude WGS84 (deg * 1E7). If unknown set to INT32_MAX</field>
+			<field type="int32_t" name="longitude">Longitude WGS84 (deg * 1E7). If unknown set to INT32_MAX</field>
+			<field type="int32_t" name="altPres">Barometric pressure altitude relative to a standard atmosphere of 1013.2 mBar and NOT bar corrected altitude (meters * 1E3). (up +ve). If unknown set to INT32_MAX</field>
+			<field type="int32_t" name="altGNSS">Altitude (meters * 1E3) UP +ve. WGS84 altitude. If unknown set to INT32_MAX</field>
+			<field type="uint32_t" name="accHoriz">Horizontal accuracy (mm). If unknown set to UINT32_MAX</field>
+			<field type="uint16_t" name="accVert">Vertical accuracy (cm). If unknown set to UINT16_MAX</field>
+			<field type="uint16_t" name="accVel">Velocity accuracy (m/s * 1E3). If unknown set to UINT16_MAX</field>
+			<field type="int16_t" name="velVert">GPS vertical speed (m/s * 1E2). If unknown set to INT16_MAX</field>
+			<field type="int16_t" name="nsVog">North-South velocity over ground (m/s * 10) North +ve. If unknown set to INT16_MAX</field>
+			<field type="int16_t" name="ewVog">East-West velocity over ground (m/s * 10) East +ve. If unknown set to INT16_MAX</field>
+			<field type="uint8_t" name="fixType" enum="ADSB_TRANSPONDER_DYNAMIC_INPUT_FIX_TYPE_FLAGS">0-1: no fix, 2: 2D fix, 3: 3D fix, 4: DGPS, 5: RTK</field>
+			<field type="uint8_t" name="numSats">Number of satellites visible. If unknown set to UINT8_MAX</field>
+			<field type="uint8_t" name="emStatus">Emergency status (table 2-78 of DO-260B)</field>
+			<field type="uint8_t" name="control" enum="ADSB_TRANSPONDER_DYNAMIC_INPUT_CONTROL_FLAGS">ADS-B transponder dynamic input control flags</field>
+			<field type="uint16_t" name="state" enum="ADSB_TRANSPONDER_DYNAMIC_INPUT_STATE_FLAGS">ADS-B transponder dynamic input state flags</field>
+			<field type="uint16_t" name="squawk">Mode A code (typically 1200 [0x04B0] for VFR)</field>
+		</message>
+		<message id="203" name="ADSB_TRANSPONDER_DYNAMIC_OUTPUT">
+			<description>Output data used to report status of hardware (updated every 10s)</description>
+			<field type="uint8_t" name="status" enum="ADSB_TRANSPONDER_DYNAMIC_OUTPUT_STATUS_FLAGS">ADS-B transponder messages</field>
+		</message>
         <message id="241" name="VIBRATION">
             <description>Vibration levels and accelerometer clipping</description>
             <field type="uint64_t" name="time_usec">Timestamp (micros since boot or Unix epoch)</field>

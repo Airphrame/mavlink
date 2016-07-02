@@ -1499,7 +1499,7 @@
             <field name="joint_az" type="float">Joint AZ (radians)</field>
         </message>
 
-        <message id="201" name="GIMBAL_CONTROL">
+        <message id="209" name="GIMBAL_CONTROL">
             <description>Control message for rate gimbal</description>
             <field name="target_system" type="uint8_t">System ID</field>
             <field name="target_component" type="uint8_t">Component ID</field>
